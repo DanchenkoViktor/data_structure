@@ -23,4 +23,14 @@ public class NthChildTests {
         Assert.assertNull(Helper.findNthElement(list, 6));
         Assert.assertNull(Helper.findNthElement(list, 100));
     }
+
+    @Test
+    public void customTest() {
+
+        Node<Integer> list = new Node<>(1);
+        list.next = new Node<>(null);
+        list.next.next = new Node<>(3);
+
+        Assert.assertNull(Helper.findNthElement(list, 2));
+    }
 }

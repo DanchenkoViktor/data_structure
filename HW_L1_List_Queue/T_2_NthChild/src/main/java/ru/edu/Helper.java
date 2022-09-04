@@ -20,7 +20,37 @@ public class Helper {
      * @param n    - n
      */
     public static <T> T findNthElement(Node<T> list, int n) {
+        if (list == null) {
+            return null;
+        }
+        int length = sizeNode(list);
+        if (length < n) {
+            return null;
+        } else {
+            return moveTo(list, length - n + 1);
+        }
+    }
 
-        throw new RuntimeException("Not implemented");
+    private static <T> T moveTo(Node list, int pos) {
+        if (list == null) {
+            return null;
+        }
+        if (pos == 1) {
+            return (T) list.value;
+        } else {
+            return moveTo(list.next, pos - 1);
+        }
+    }
+
+    private static int sizeNode(Node list) {
+        if (list == null) {
+            return 0;
+        }
+        int count = 0;
+        while (list != null) {
+            count++;
+            list = list.next;
+        }
+        return count;
     }
 }
